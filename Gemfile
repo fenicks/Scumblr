@@ -65,6 +65,7 @@ gem "select2-rails"
 
 #Faster json parsing
 gem 'oj'
+gem 'nokogiri', '~> 1.6.7'
 
 #Bulk edits
 gem 'activerecord-import'
