@@ -19,5 +19,5 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Scumblr::Application.config.secret_token = 'b790223fd61a2e71c2073d5d1df328d3d2061fbd213834d310a58df4b9ee837945b2f77c0f94307ed9d3252f73ebbedf5e08a84fc80b2a3c6733475c1c2f374d'
+Scumblr::Application.config.secret_token = '05b5f02eb0b0cebb3f51f04fbc87d771b77d0bab2e4a3d5f5b1641ce5c44401c4ada7e0e99ff375c1f18a9c3ea6dcb3c2dc275adc3bffd997da704267cdfef87'
 Rails.application.config.secret_key_base = '0fd207bbd216db4fab3024a2a81b020f7233365355ce5c2ced4fe1e4eb5c5605532e7024dfafb71b74ecdd26ac9f101fa88d8ee85a97b610390cd2ee50d98a74'
