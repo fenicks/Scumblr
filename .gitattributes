@@ -5,3 +5,4 @@ Gemfile.lock export-ignore
 .rubocop.yml export-ignore
 spec export-ignore
 tmp export-ignore
+.versions.conf export-ignore
