@@ -155,7 +155,7 @@ group :development, :dirtylaundrydev, :profile do
   # gem 'quiet_assets'
   gem "better_errors"
   gem 'pry'
-
+  gem 'rubocop'
 end
 
 #Testing
