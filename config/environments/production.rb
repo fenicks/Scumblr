@@ -75,10 +75,17 @@ Scumblr::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.delivery_method = :amazon_ses
-  
-  Rails.application.routes.default_url_options[:host] = "scumblrhost"
-  Rails.application.routes.default_url_options[:protocol] = "scumblrprotocol"
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      address:              ENV['SES_HOST'] || 'localhost',
+      port:                 Integer(ENV['SES_PORT'] || 587),
+      domain:               ENV['SES_DOMAIN'] || 'kakesa.net',
+      user_name:            ENV['SES_USERNAME'],
+      password:             ENV['SES_PASSWORD'],
+      authentication:       ENV['SES_AUTHENTICATION_METHOD'] || 'plain',
+      enable_starttls_auto: 'true'.eql?(ENV['SES_START_TLS_AUTO']) ? true : false,
+      openssl_verify_mode:  ENV['SES_SSL_VERIFY_MODE'] || 'none'
+  }
 
   # Enable threaded mode
   # config.threadsafe!
