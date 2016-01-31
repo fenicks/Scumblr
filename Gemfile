@@ -8,7 +8,7 @@ gem 'zip'
 gem 'posix-spawn'
 
 #For Tasks/Search Providers
-gem 'google-api-client', '~>0.8.0'
+gem 'google-api-client', '~>0.8.6'
 gem "github_api", require: false
 gem 'colorize', require: false
 gem 'twitter'
