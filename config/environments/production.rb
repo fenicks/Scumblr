@@ -104,3 +104,6 @@ Scumblr::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 end
+
+Rails.application.routes.default_url_options[:host] = 'scumblr.kakesa.net'
+Rails.application.routes.default_url_options[:protocol] = 'https'
