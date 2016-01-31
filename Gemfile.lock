@@ -528,7 +528,7 @@ DEPENDENCIES
   foundation-rails (= 5.3.3.0)
   git
   github_api
-  google-api-client (~> 0.8.0)
+  google-api-client (~> 0.8.6)
   hashdiff
   ip
   jiralicious
