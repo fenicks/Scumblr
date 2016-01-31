@@ -12,21 +12,34 @@
 #     See the License for the specific language governing permissions and
 #     limitations under the License.
 
-
+require 'redis'
+require 'redis-namespace'
 require 'sidekiq'
 require 'sidekiq-status'
 
+redis_conn = proc do
+  conn = Redis.new(url: ENV['SCUMBLR_REDIS_URL'] || 'redis://localhost:6379/0'.freeze,
+                   driver: :hiredis,
+                   timeout: 60,
+                   tcp_keepalive: 60,
+                   reconnect_attempts: 12)
+  Redis::Namespace.new(:scumblr, redis: conn)
+end
+
 Sidekiq.configure_client do |config|
+  config.redis = ConnectionPool.new(size: Integer(ENV['SCUMBLR_REDIS_CONN_SIZE'] || 10), &redis_conn)
+
   config.client_middleware do |chain|
     chain.add Sidekiq::Status::ClientMiddleware
   end
 end
 
 Sidekiq.configure_server do |config|
-
   Rails.logger = Sidekiq::Logging.logger
   ActiveRecord::Base.logger = Sidekiq::Logging.logger
   Sidekiq::Logging.logger.level = Logger::INFO
+
+  config.redis = ConnectionPool.new(size: Integer(ENV['SCUMBLR_REDIS_CONN_SIZE'] || 10), &redis_conn)
 
   config.server_middleware do |chain|
     chain.add Sidekiq::Status::ServerMiddleware, expiration: 30.minutes # default

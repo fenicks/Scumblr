@@ -70,6 +70,9 @@ gem 'oj'
 gem 'activerecord-import'
 
 #Used for task queueing
+gem 'hiredis'
+gem 'redis', require: %w(redis/connection/hiredis redis)
+gem 'redis-namespace'
 gem 'sidekiq'
 gem 'sidekiq-status'
 
