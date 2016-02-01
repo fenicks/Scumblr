@@ -112,5 +112,5 @@ Scumblr::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 end
 
-Rails.application.routes.default_url_options[:host] = 'scumblr.kakesa.net'
-Rails.application.routes.default_url_options[:protocol] = 'https'
+Rails.application.routes.default_url_options[:host] = ENV['SCUMBLR_URL_DEFAULT_HOST'] || 'localhost'
+Rails.application.routes.default_url_options[:protocol] = ENV['SCUMBLR_URL_DEFAULT_SCHEME'] || 'http'
