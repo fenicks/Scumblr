@@ -4,15 +4,39 @@
   <%= ERB.new(File.read("../custom/config/database.yml")).result %>
 <% else %>
 development:
-  adapter: postgresql
-  encoding: unicode
-  database: scumblr_dev
-  host: localhost
-  username: scumblr
-  password: scumblr
-  port: 5432
-  pool: 75
-  socket: /tmp/mysql.sock
+ adapter: sqlite3
+ database: db/development.sqlite3
+ pool: 5
+ timeout: 5000
+
+staging:
+ adapter: sqlite3
+ database: db/staging.sqlite3
+ pool: 5
+ timeout: 5000
+
+production:
+ adapter: postgresql
+ host: '<%= ENV['DB_HOST'] %>'
+ port: <%= ENV['DB_PORT'] %>
+ database: <%= ENV['DB_DATABASE'] %>
+ encoding: unicode
+ timeout: 5000
+ pool: 5
+ schema_search_path: '<%= ENV['DB_SCHEMA'] %>'
+ username: '<%= ENV['DB_USERNAME'] %>'
+ password: '<%= ENV['DB_PASSWORD'] %>'
+
+# development:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: scumblr_dev
+#   host: localhost
+#   username: scumblr
+#   password: scumblr
+#   port: 5432
+#   pool: 75
+#   socket: /tmp/mysql.sock
 
 test:
   adapter: postgresql
