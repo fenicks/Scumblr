@@ -35,11 +35,7 @@ gem 'zeroclipboard-rails'
 gem 'activerecord-session_store', git: 'https://github.com/rails/activerecord-session_store'
 #Database gems
 gem 'sqlite3'
-<<<<<<< 6dce2eaf98ac70eae727fac1b3cc8c63e7aca6a4
-gem 'pg'
-=======
 gem 'pg', '~> 0.16.0'
->>>>>>> Uncomment the PG gem.
 
 #git functionality
 gem 'git'
