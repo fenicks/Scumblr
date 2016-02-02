@@ -35,7 +35,7 @@ gem 'zeroclipboard-rails'
 gem 'activerecord-session_store', git: 'https://github.com/rails/activerecord-session_store'
 #Database gems
 gem 'sqlite3'
-gem 'pg', '~> 0.16.0'
+gem 'pg', '~> 0.15.1'
 
 #git functionality
 gem 'git'
