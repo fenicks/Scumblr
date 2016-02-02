@@ -132,16 +132,14 @@ class SearchesController < ApplicationController
 
   def events
     @statuses = []
-    begin
       Sidekiq::Workers.new.each do |k,k2,v|
         @statuses << Sidekiq::Status.get_all(v["payload"]["jid"])
       end
       @statuses.sort!{|x,y| x["message"].to_s[0] <=> y["message"].to_s[0]}
-    rescue Redis::CannotConnectError
-      # Ignored execption
-    rescue => e
-      Rails.logger.error "[SEARCH_EVENTS]: #{e.message}"
-    end
+  rescue Redis::CannotConnectError
+    # Ignored execption
+  rescue => e
+    Rails.logger.error "[SEARCH_EVENTS]: #{e.message}"
   end
 
 
