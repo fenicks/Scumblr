@@ -61,7 +61,7 @@ gem 'aws-sdk', '< 2.0'
 gem 'chronic'
 
 #Nice select fields
-gem "select2-rails"
+gem 'select2-rails', '~> 3.5'
 
 #Faster json parsing
 gem 'oj'
