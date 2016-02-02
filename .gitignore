@@ -50,3 +50,5 @@ Dockerfile.*
 build/*
 *.swp
 .gradle
+
+.idea
