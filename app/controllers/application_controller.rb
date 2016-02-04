@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :authenticate_user!
   before_filter :require_enabled
-  
+
   force_ssl if: :ssl_configured?
 
   def require_enabled
@@ -41,6 +41,7 @@ class ApplicationController < ActionController::Base
   def ssl_configured?
     !(Rails.env.development? || Rails.env.profile? || Rails.env.dirtylaundrydev? )
   end
+
 
   def handler_exception(exception)
     if request.xhr? then
