@@ -13,7 +13,7 @@
 #     limitations under the License.
 
 require 'redis'
-require 'redis/namespace'
+require 'redis-namespace'
 require 'sidekiq'
 require 'sidekiq-status'
 
