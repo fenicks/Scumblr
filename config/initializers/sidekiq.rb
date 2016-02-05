@@ -17,14 +17,6 @@ require 'redis-namespace'
 require 'sidekiq'
 require 'sidekiq-status'
 
-# redis_conn = proc do
-#   conn = Redis.new(url: ENV['SCUMBLR_REDIS_URL'] || 'redis://localhost:6379/0'.freeze,
-#                    driver: :hiredis,
-#                    timeout: 600,
-#                    reconnect_attempts: 100)
-#   Redis::Namespace.new(:scumblr, redis: conn)
-# end
-
 redis_info = { driver: :hiredis,
                url: ENV['SCUMBLR_REDIS_URL'] || 'redis://localhost:6379/0'.freeze,
                namespace: :scumblr,
@@ -33,8 +25,7 @@ redis_info = { driver: :hiredis,
                pool_timeout: 600 }
 
 Sidekiq.configure_client do |config|
-  # config.redis = ConnectionPool.new(size: Integer(ENV['SCUMBLR_REDIS_CONN_SIZE'] || 10), &redis_conn)
-  config.redis = redis_info
+   config.redis = redis_info
 
   config.client_middleware do |chain|
     chain.add Sidekiq::Status::ClientMiddleware
@@ -46,7 +37,6 @@ Sidekiq.configure_server do |config|
   ActiveRecord::Base.logger = Sidekiq::Logging.logger
   Sidekiq::Logging.logger.level = Logger::INFO
 
-  # config.redis = ConnectionPool.new(size: Integer(ENV['SCUMBLR_REDIS_CONN_SIZE'] || 10), &redis_conn)
   config.redis = redis_info
 
   config.server_middleware do |chain|
