@@ -20,9 +20,8 @@ require 'sidekiq-status'
 redis_conn = proc do
   conn = Redis.new(url: ENV['SCUMBLR_REDIS_URL'] || 'redis://localhost:6379/0'.freeze,
                    driver: :hiredis,
-                   timeout: 60,
-                   tcp_keepalive: 60,
-                   reconnect_attempts: 12)
+                   timeout: 600,
+                   reconnect_attempts: 100)
   Redis::Namespace.new(:scumblr, redis: conn)
 end
 
@@ -42,7 +41,7 @@ Sidekiq.configure_server do |config|
   config.redis = ConnectionPool.new(size: Integer(ENV['SCUMBLR_REDIS_CONN_SIZE'] || 10), &redis_conn)
 
   config.server_middleware do |chain|
-    chain.add Sidekiq::Status::ServerMiddleware, expiration: 30.minutes # default
+    chain.add Sidekiq::Status::ServerMiddleware, expiration: 60.minutes # default
   end
   config.client_middleware do |chain|
     chain.add Sidekiq::Status::ClientMiddleware
