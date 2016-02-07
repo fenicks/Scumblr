@@ -23,7 +23,7 @@ if Rails.env.production?
 
     # Provider configurations
 
-    #config.ebay_access_key = ''
+    config.ebay_access_key = ENV['EBAY_ACCESS_KEY'] if ENV['EBAY_ACCESS_KEY']
 
     config.facebook_app_id = ENV['FACEBOOK_APP_ID']
     config.facebook_app_secret = ENV['FACEBOOK_APP_SECRET']
