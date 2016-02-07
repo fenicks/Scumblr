@@ -75,9 +75,9 @@ module SearchProvider
         caption = (sr['caption'] || '').force_encoding(Encoding::UTF_8).freeze
         msg = (sr['message'] || '').force_encoding(Encoding::UTF_8).freeze
         res << {
-          title: (msg.empty? ? caption : msg).truncate(128),
-          url: "https://www.facebook.com/#{sr['id'].to_s.gsub!(/_/, '/posts/')}",
-          domain: 'facebook.com'.freeze
+            title: (msg.empty? ? caption : msg).truncate(128),
+            url: "https://www.facebook.com/#{sr['id'].to_s.gsub!(/_/, '/posts/')}",
+            domain: 'facebook.com'.freeze
         }
       end
       res
