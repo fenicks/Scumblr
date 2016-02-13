@@ -15,11 +15,11 @@
 if Rails.env.production?
   Scumblr::Application.configure do
     # Should Scumblr automatically generate screenshots for new results
-    # config.sketchy_url = "http://localhost:80/api/v1.0/capture"
-    # config.sketchy_use_ssl = false  # Does sketchy use ssl?
-    # config.sketchy_verify_ssl = true # Should scumblr verify sketchy's cert
-    # config.sketchy_tag_status_code = true # Add a tag indicating last status code sketchy received
-    # config.sketchy_access_token = "" # Access token for sketchy
+    config.sketchy_url = ENV['SKETCHY_URL'] || 'http://localhost/api/v1.0/capture'
+    config.sketchy_use_ssl = 'true'.eql? ENV['SKETCHY_USE_SSL']  # Does sketchy use ssl?
+    config.sketchy_verify_ssl = 'true'.eql? ENV['SKETCHY_VERIFY_SSL'] # Should scumblr verify sketchy's cert
+    config.sketchy_tag_status_code = 'true'.eql? ENV['SKETCHY_TAG_STATUS_CODE'] # Add a tag indicating last status code sketchy received
+    config.sketchy_access_token = ENV['SKETCHY_ACCESS_TOKEN'] || ''.freeze # Access token for sketchy
 
     # Provider configurations
 
@@ -30,12 +30,12 @@ if Rails.env.production?
 
     config.google_developer_key = ENV['GOOGLE_DEVELOPER_KEY']
     config.google_cx  = ENV['GOOGLE_CX']
-    config.google_application_name = ENV['GOOGLE_APPLICATION_NAME'] || 'Scumblr'
-    config.google_application_version = ENV['GOOGLE_APPLICATION_VERSION'] || '1.0'
+    config.google_application_name = ENV['GOOGLE_APPLICATION_NAME'] || 'Scumblr'.freeze
+    config.google_application_version = ENV['GOOGLE_APPLICATION_VERSION'] || '1.0'.freeze
 
     config.youtube_developer_key = ENV['GOOGLE_DEVELOPER_KEY']
-    config.youtube_application_name = ENV['GOOGLE_APPLICATION_NAME'] || 'Scumblr'
-    config.youtube_application_version = ENV['GOOGLE_APPLICATION_VERSION'] || '1.0'
+    config.youtube_application_name = ENV['GOOGLE_APPLICATION_NAME'] || 'Scumblr'.freeze
+    config.youtube_application_version = ENV['GOOGLE_APPLICATION_VERSION'] || '1.0'.freeze
 
     config.twitter_consumer_key        = ENV['TWITTER_CONSUMER_KEY']
     config.twitter_consumer_secret     = ENV['TWITTER_CONSUMER_SECRET']
