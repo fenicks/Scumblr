@@ -87,6 +87,15 @@ Scumblr::Application.configure do
       openssl_verify_mode:  ENV['SES_SSL_VERIFY_MODE'] || 'none'
   }
 
+  config.paperclip_defaults = {
+      storage: :s3,
+      s3_credentials: {
+          access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+          bucket: ENV['AWS_S3_BUCKET_NAME'],
+          secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+      }
+  }
+
   # Enable threaded mode
   # config.threadsafe!
 
