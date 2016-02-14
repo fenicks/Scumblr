@@ -15,7 +15,7 @@
 if Rails.env.production?
   Scumblr::Application.configure do
     # Should Scumblr automatically generate screenshots for new results
-    config.sketchy_url = ENV['SKETCHY_URL'] || 'http://localhost/api/v1.0/capture'
+    config.sketchy_url = ENV['SKETCHY_URL'] || 'http://localhost:8000/api/v1.0/capture'
     config.sketchy_use_ssl = 'true'.eql? ENV['SKETCHY_USE_SSL']  # Does sketchy use ssl?
     config.sketchy_verify_ssl = 'true'.eql? ENV['SKETCHY_VERIFY_SSL'] # Should scumblr verify sketchy's cert
     config.sketchy_tag_status_code = 'true'.eql? ENV['SKETCHY_TAG_STATUS_CODE'] # Add a tag indicating last status code sketchy received
