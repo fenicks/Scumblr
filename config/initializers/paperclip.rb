@@ -5,3 +5,4 @@ Paperclip.interpolates(:s3_eu_url) { |attachment, style|
 Paperclip::Attachment.default_options[:url] = ':s3_eu_url'
 Paperclip::Attachment.default_options[:path] = 'screenshots/:class/:attachment/:id_partition/:style/:filename'
 Paperclip::Attachment.default_options[:s3_host_name] = 's3.eu-central-1.amazonaws.com'
+Paperclip::Attachment.default_options[:s3_protocol] = (ENV['SCUMBLR_URL_DEFAULT_SCHEME'] || 'http').to_sym
