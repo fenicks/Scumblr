@@ -92,7 +92,7 @@ Scumblr::Application.configure do
       s3_credentials: {
           access_key_id: ENV['AWS_ACCESS_KEY_ID'],
           bucket: ENV['AWS_S3_BUCKET_NAME'],
-          s3_protocol: ENV['SCUMBLR_URL_DEFAULT_SCHEME'],
+          s3_protocol: (ENV['SCUMBLR_URL_DEFAULT_SCHEME'] || 'http').to_sym,
           secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
       }
   }
