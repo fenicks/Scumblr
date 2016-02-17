@@ -79,10 +79,10 @@ Scumblr::Application.configure do
   config.action_mailer.smtp_settings = {
       address:              ENV['SES_HOST'] || 'localhost'.freeze,
       port:                 Integer(ENV['SES_PORT'] || 587),
-      # domain:               ENV['SES_DOMAIN'] || 'kakesa.net'.freeze,
+      domain:               ENV['SES_DOMAIN'] || 'kakesa.net'.freeze,
       user_name:            ENV['SES_USERNAME'],
       password:             ENV['SES_PASSWORD'],
-      authentication:       (ENV['SES_AUTHENTICATION_METHOD'] || 'plain'.freeze).to_sym,
+      authentication:       (ENV['SES_AUTHENTICATION_METHOD'] || 'plain').to_sym,
       enable_starttls_auto: 'true'.eql?(ENV['SES_START_TLS_AUTO']) ? true : false,
       openssl_verify_mode:  ENV['SES_SSL_VERIFY_MODE'] || 'none'.freeze
   }
@@ -92,7 +92,7 @@ Scumblr::Application.configure do
       s3_credentials: {
           access_key_id: ENV['AWS_ACCESS_KEY_ID'],
           bucket: ENV['AWS_S3_BUCKET_NAME'],
-          s3_protocol: (ENV['SCUMBLR_URL_DEFAULT_SCHEME'] || 'http'.freeze).to_sym,
+          s3_protocol: (ENV['SCUMBLR_URL_DEFAULT_SCHEME'] || 'http').to_sym,
           secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
       }
   }
