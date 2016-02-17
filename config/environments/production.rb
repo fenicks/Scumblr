@@ -84,7 +84,7 @@ Scumblr::Application.configure do
       password:             ENV['SES_PASSWORD'],
       authentication:       (ENV['SES_AUTHENTICATION_METHOD'] || 'plain').to_sym,
       enable_starttls_auto: 'true'.eql?(ENV['SES_START_TLS_AUTO']) ? true : false,
-      openssl_verify_mode:  ENV['SES_SSL_VERIFY_MODE'] || 'none'.freeze
+      # openssl_verify_mode:  ENV['SES_SSL_VERIFY_MODE'] || 'none'.freeze
   }
 
   config.paperclip_defaults = {
