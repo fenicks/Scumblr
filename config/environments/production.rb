@@ -79,7 +79,7 @@ Scumblr::Application.configure do
   config.action_mailer.smtp_settings = {
       address:              ENV['SES_HOST'] || 'localhost'.freeze,
       port:                 Integer(ENV['SES_PORT'] || 587),
-      domain:               ENV['SES_DOMAIN'] || 'kakesa.net'.freeze,
+      # domain:               ENV['SES_DOMAIN'] || 'kakesa.net'.freeze,
       user_name:            ENV['SES_USERNAME'],
       password:             ENV['SES_PASSWORD'],
       authentication:       (ENV['SES_AUTHENTICATION_METHOD'] || 'plain'.freeze).to_sym,
