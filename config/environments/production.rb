@@ -76,16 +76,16 @@ Scumblr::Application.configure do
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-      address:              ENV['SES_HOST'] || 'localhost'.freeze,
-      port:                 Integer(ENV['SES_PORT'] || 587),
-      domain:               ENV['SES_DOMAIN'] || 'kakesa.net'.freeze,
-      user_name:            ENV['SES_USERNAME'],
-      password:             ENV['SES_PASSWORD'],
-      authentication:       (ENV['SES_AUTHENTICATION_METHOD'] || 'plain').to_sym,
-      enable_starttls_auto: 'true'.eql?(ENV['SES_START_TLS_AUTO']) ? true : false,
-      openssl_verify_mode:  ENV['SES_SSL_VERIFY_MODE'] || 'none'.freeze
-  }
+  # config.action_mailer.smtp_settings = {
+  #     address:              ENV['SES_HOST'] || 'localhost'.freeze,
+  #     port:                 Integer(ENV['SES_PORT'] || 587),
+  #     domain:               ENV['SES_DOMAIN'] || 'kakesa.net'.freeze,
+  #     user_name:            ENV['SES_USERNAME'],
+  #     password:             ENV['SES_PASSWORD'],
+  #     authentication:       (ENV['SES_AUTHENTICATION_METHOD'] || 'plain').to_sym,
+  #     enable_starttls_auto: 'true'.eql?(ENV['SES_START_TLS_AUTO']) ? true : false,
+  #     openssl_verify_mode:  ENV['SES_SSL_VERIFY_MODE'] || 'none'.freeze
+  # }
   config.action_mailer.default_url_options = {host: 'scumblr.kakesa.net'}
 
   config.paperclip_defaults = {
