@@ -42,14 +42,4 @@ if Rails.env.production?
     config.twitter_access_token        = ENV['TWITTER_ACCESS_TOKEN']
     config.twitter_access_token_secret = ENV['TWITTER_ACCESS_TOKEN_SECRET']
   end
-
-  require 'net/smtp'
-
-  module Net
-    class SMTP
-      def tls?
-        true
-      end
-    end
-  end
 end

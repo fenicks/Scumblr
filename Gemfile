@@ -55,7 +55,7 @@ gem 'ransack'
 #Image processing/attachments
 gem 'paperclip'
 gem 'aws-sdk', '< 2.0'
-
+gem 'aws-ses', require: 'aws/ses'
 
 # Time period parsing
 gem 'chronic'
