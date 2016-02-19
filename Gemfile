@@ -8,7 +8,7 @@ gem 'zip'
 gem 'posix-spawn'
 
 #For Tasks/Search Providers
-gem 'google-api-client', '~>0.8.6'
+gem 'google-api-client', '~>0.8.0'
 gem "github_api", require: false
 gem 'colorize', require: false
 gem 'twitter'
@@ -35,7 +35,7 @@ gem 'zeroclipboard-rails'
 gem 'activerecord-session_store', git: 'https://github.com/rails/activerecord-session_store'
 #Database gems
 gem 'sqlite3'
-gem 'pg', '~> 0.15.1'
+gem 'pg'
 
 #git functionality
 gem 'git'
@@ -55,25 +55,21 @@ gem 'ransack'
 #Image processing/attachments
 gem 'paperclip'
 gem 'aws-sdk', '< 2.0'
-gem 'aws-ses', require: 'aws/ses'
+
 
 # Time period parsing
 gem 'chronic'
 
 #Nice select fields
-gem 'select2-rails', '~> 3.5'
+gem "select2-rails"
 
 #Faster json parsing
 gem 'oj'
-gem 'nokogiri', '~> 1.6.7'
 
 #Bulk edits
 gem 'activerecord-import'
 
 #Used for task queueing
-gem 'hiredis'
-gem 'redis', require: %w(redis/connection/hiredis redis)
-gem 'redis-namespace'
 gem 'sidekiq'
 gem 'sidekiq-status'
 
@@ -159,7 +155,7 @@ group :development, :dirtylaundrydev, :profile do
   # gem 'quiet_assets'
   gem "better_errors"
   gem 'pry'
-  gem 'rubocop'
+
 end
 
 #Testing
