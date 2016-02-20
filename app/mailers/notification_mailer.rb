@@ -12,18 +12,13 @@
 #     See the License for the specific language governing permissions and
 #     limitations under the License.
 
-
 class NotificationMailer < ActionMailer::Base
   default from: ENV['SES_DEFAULT_FROM'] || 'scumblr@localhost'
+  default to: ENV['SES_DEFAULT_TO'] || 'scumblr@scumblr.com'
 
   def notification(recipients, subject, content)
     attachments['logo.png'] = File.read("#{Rails.root}/app/assets/images/scumblr_logo.png")
     @content = content
-
-    mail(:to=> "scumblr@scumblr.com", :bcc=> recipients, :subject=>subject)
-
+    mail(bcc: recipients, subject: subject)
   end
-
-
-
 end
