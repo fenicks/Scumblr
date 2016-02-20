@@ -20,11 +20,6 @@ class Workflowable::Actions::StatusChangeNotifcationAction < Workflowable::Actio
       message = "<a href='#{result_url(@object.result)}'>Result #{@object.result.id}</a> has been moved from #{@current_stage.name} to #{@next_stage.name} in the #{@workflow.name} workflow".html_safe
     end
 
-    # TODO(fenicks): remove this after tests
-    Rails.logger.info "[TRACE:FENICKS:RECIPIENTS]: #{recipients.inspect}"
-    Rails.logger.info "[TRACE:FENICKS:SUBJECT]:    #{subject.inspect}"
-    Rails.logger.info "[TRACE:FENICKS:MESSAGE]:    #{message.inspect}"
-
     ::NotificationMailer.notification(
       recipients, 
       subject, 
