@@ -87,7 +87,7 @@ Scumblr::Application.configure do
     enable_starttls_auto: 'true'.eql?(ENV['SES_START_TLS_AUTO']) ? true : false,
     openssl_verify_mode:  ENV['SES_SSL_VERIFY_MODE'] || 'none'.freeze
   }
-  config.action_mailer.default_options = { host: 'scumblr.kakesa.net'.freeze, from: 'scumblr@kakesa.net'.freeze }
+  config.action_mailer.default_options = { host: 'scumblr.kakesa.net'.freeze }
 
   config.paperclip_defaults = {
     storage: :s3,
