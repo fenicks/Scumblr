@@ -121,8 +121,5 @@ module Scumblr
 
       # Version of your assets, change this if you want to expire all your assets
       config.assets.version = '1.0'
-
-      # Mailers default options
-      config.action_mailer.default_options = { from: ENV['SCUMBLR_EMAIL_DEFAULT_FROM'] || 'scumblr@localhost'.freeze }
     end
 end
