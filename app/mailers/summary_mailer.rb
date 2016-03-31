@@ -14,14 +14,13 @@
 
 class SummaryMailer < ActionMailer::Base
   default from: ENV['SES_DEFAULT_FROM'] || 'scumblr@localhost'
-  default to: ENV['SES_DEFAULT_TO'] || 'scumblr@scumblr.com'
 
   def notification(recipients, filter, results)
-    attachments['logo.png'] = File.read("#{Rails.root}/app/assets/images/scumblr_logo.png")
+    attachments.inline['logo.png'] = File.read("#{Rails.root}/app/assets/images/scumblr_logo.png")
 
     @results = results
     @filter = filter
     subject = "Scumblr: Daily update for: #{@filter.name}"
-    mail(bcc: recipients, subject: subject)
+    mail(to: ENV['SES_DEFAULT_TO'] || 'scumblr@scumblr.com', bcc: recipients, subject: subject)
   end
 end

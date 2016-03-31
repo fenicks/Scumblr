@@ -76,6 +76,10 @@ Scumblr::Application.configure do
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
 
+  config.action_mailer.default_options = {
+      host: 'scumblr.kakesa.net'.freeze,
+      from: ENV['SES_DEFAULT_FROM'] || 'scumblr@localhost'.freeze
+  }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              ENV['SES_HOST'] || 'localhost'.freeze,
@@ -86,10 +90,6 @@ Scumblr::Application.configure do
     authentication:       (ENV['SES_AUTHENTICATION_METHOD'] || 'plain').to_sym,
     enable_starttls_auto: 'true'.eql?(ENV['SES_START_TLS_AUTO']) ? true : false,
     openssl_verify_mode:  ENV['SES_SSL_VERIFY_MODE'] || 'none'.freeze
-  }
-  config.action_mailer.default_options = {
-      host: 'scumblr.kakesa.net'.freeze,
-      from: ENV['SCUMBLR_EMAIL_DEFAULT_FROM'] || 'scumblr@localhost'.freeze
   }
 
   config.paperclip_defaults = {
