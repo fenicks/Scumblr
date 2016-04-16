@@ -20,7 +20,7 @@ require 'sidekiq-status'
 redis_info = { driver: :hiredis,
                url: ENV['SCUMBLR_REDIS_URL'] || 'redis://localhost:6379/0'.freeze,
                namespace: :scumblr,
-               size: Integer(ENV['SCUMBLR_REDIS_CONN_SIZE'] || 5),
+               size: Integer(ENV['SCUMBLR_REDIS_CONN_SIZE'] || 27),
                network_timeout: 60,
                pool_timeout: 600 }
 
