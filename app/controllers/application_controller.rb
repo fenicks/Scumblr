@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   force_ssl if: :ssl_configured?
 
   def require_enabled
-    if(current_user && current_user.disabled ==true)
+    if(current_user && current_user.disabled == true)
       reset_session
       redirect_to new_user_session_path, notice: "Your account is disabled."
 
@@ -39,7 +39,8 @@ class ApplicationController < ActionController::Base
   end
 
   def ssl_configured?
-    !(Rails.env.development? || Rails.env.profile? || Rails.env.dirtylaundrydev? )
+    # !(Rails.env.development? || Rails.env.profile? || Rails.env.test?)
+    false
   end
 
 
