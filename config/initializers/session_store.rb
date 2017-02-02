@@ -15,9 +15,9 @@
 
 # Be sure to restart your server when you modify this file.
 
-#Scumblr::Application.config.session_store :cookie_store, key: '_scumblr_session'
+Scumblr::Application.config.session_store :cookie_store, key: ENV['SCUMBLR_SESSION_KEY'] || SecureRandom.hex(64)
 
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information
 # (create the session table with "rails generate session_migration")
-Scumblr::Application.config.session_store :active_record_store, key: '_scumblr_session'
+# Scumblr::Application.config.session_store :active_record_store, key: '_scumblr_session'
