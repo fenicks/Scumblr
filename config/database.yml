@@ -3,6 +3,12 @@
 <% elsif File.exists?("../custom/config/database.yml") %>
   <%= ERB.new(File.read("../custom/config/database.yml")).result %>
 <% else %>
+test:
+ adapter: sqlite3
+ database: db/test.sqlite3
+ pool: 5
+ timeout: 5000
+
 development:
  adapter: sqlite3
  database: db/development.sqlite3
@@ -26,59 +32,4 @@ production:
  schema_search_path: '<%= ENV['DB_SCHEMA'] %>'
  username: '<%= ENV['DB_USERNAME'] %>'
  password: '<%= ENV['DB_PASSWORD'] %>'
-
-# development:
-#   adapter: postgresql
-#   encoding: unicode
-#   database: scumblr_dev
-#   host: localhost
-#   username: scumblr
-#   password: scumblr
-#   port: 5432
-#   pool: 75
-#   socket: /tmp/mysql.sock
-
-test:
-  adapter: postgresql
-  encoding: unicode
-  database: scumblr_test
-  host: localhost
-  username: scumblr
-  password: scumblr
-  port: 5432
-  pool: 75
-  socket: /tmp/mysql.sock
-
-# staging:
-#   adapter: postgresql
-#   encoding: unicode
-#   database: scumblr_staging
-#   host: localhost
-#   username: scumblr
-#   password: scumblr
-#   port: 5432
-#   pool: 75
-#   socket: /tmp/mysql.sock
-
-# production:
-#   adapter: postgresql
-#   encoding: unicode
-#   database: scumblr_prod
-#   username: scumblr
-#   password: scumblr
-#   host: localhost
-#   port: 5432
-#   pool: 75
-#   socket: /tmp/mysql.sock
-
-# test:
-#   adapter: postgresql
-#   encoding: unicode
-#   database: scumblr_test
-#   username: scumblr
-#   password: scumblr
-#   host: localhost
-#   port: 5432
-#   pool: 75
-#   socket: /tmp/mysql.sock
 <% end %>
