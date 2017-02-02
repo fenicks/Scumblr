@@ -36,6 +36,9 @@ gem 'activerecord-session_store', git: 'https://github.com/rails/activerecord-se
 #Database gems
 gem 'sqlite3'
 gem 'pg'
+gem 'hiredis'
+gem 'redis'
+gem 'redis-namespace'
 
 #git functionality
 gem 'git'
